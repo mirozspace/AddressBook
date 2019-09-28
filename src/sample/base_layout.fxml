@@ -1,8 +1,297 @@
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
+<?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<GridPane fx:controller="sample.BaseLayoutController"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
-</GridPane>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1210.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.BaseLayoutController">
+   <top>
+      <MenuBar prefHeight="17.0" prefWidth="1250.0" BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+               </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <left>
+      <VBox prefHeight="575.0" prefWidth="284.0" BorderPane.alignment="CENTER">
+         <children>
+            <Region prefHeight="64.0" prefWidth="257.0" />
+            <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="150.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="First Name: ">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="firstName" prefHeight="0.0" prefWidth="149.0">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="74.0" prefHeight="50.0" prefWidth="150.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name: ">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="lastName" prefHeight="0.0" prefWidth="149.0">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="124.0" prefHeight="50.0" prefWidth="150.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mobile phone:">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="mobilePhone" prefHeight="0.0" prefWidth="149.0">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="174.0" prefHeight="50.0" prefWidth="150.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Home phone:">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="homePhone" prefHeight="0.0" prefWidth="149.0">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="224.0" prefHeight="50.0" prefWidth="150.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Work phone:">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="workPhone" prefHeight="0.0" prefWidth="149.0">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="274.0" prefHeight="50.0" prefWidth="150.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Age:">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="age" prefHeight="0.0" prefWidth="149.0">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="324.0" prefHeight="50.0" prefWidth="150.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="City:">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="city" prefHeight="0.0" prefWidth="149.0">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="374.0" prefHeight="50.0" prefWidth="150.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Country:">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="country" prefHeight="0.0" prefWidth="149.0">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="374.0" prefHeight="50.0" prefWidth="150.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#buttonResetPersonClicked" text="Reset">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="95.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#buttonSavePersonClicked" text="Save Person">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <VBox prefHeight="675.0" prefWidth="849.0" BorderPane.alignment="CENTER">
+         <children>
+            <Region prefHeight="181.0" prefWidth="651.0" />
+            <TextArea prefHeight="610.0" prefWidth="641.0">
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+            </TextArea>
+         </children>
+      </VBox>
+   </center>
+   <right>
+      <VBox prefHeight="675.0" prefWidth="315.0" BorderPane.alignment="CENTER">
+         <children>
+            <Region prefHeight="81.0" prefWidth="315.0" />
+            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="250.0" text="Show all contacts (name)">
+               <VBox.margin>
+                  <Insets bottom="7.0" left="30.0" right="7.0" top="7.0" />
+               </VBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="250.0" text="Button">
+               <VBox.margin>
+                  <Insets bottom="7.0" left="30.0" right="7.0" top="7.0" />
+               </VBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="250.0" text="Button">
+               <VBox.margin>
+                  <Insets bottom="7.0" left="30.0" right="7.0" top="7.0" />
+               </VBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="250.0" text="Button">
+               <VBox.margin>
+                  <Insets bottom="7.0" left="30.0" right="7.0" top="7.0" />
+               </VBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="250.0" text="Button">
+               <VBox.margin>
+                  <Insets bottom="7.0" left="30.0" right="7.0" top="7.0" />
+               </VBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="250.0" text="Button">
+               <VBox.margin>
+                  <Insets bottom="7.0" left="30.0" right="7.0" top="7.0" />
+               </VBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="250.0" text="Button">
+               <VBox.margin>
+                  <Insets bottom="7.0" left="30.0" right="7.0" top="7.0" />
+               </VBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#removeAllContacts" prefHeight="35.0" prefWidth="250.0" text="Remove all contacts" textAlignment="CENTER" textFill="#b21414">
+               <VBox.margin>
+                  <Insets bottom="7.0" left="30.0" right="7.0" top="7.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+         </children></VBox>
+   </right>
+   <bottom>
+      <HBox prefHeight="58.0" prefWidth="1250.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="AddressBook 2019 - v1">
+               <HBox.margin>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="System Italic" size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="25.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="For contct: Facebook">
+               <font>
+                  <Font name="System Italic" size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </HBox.margin>
+            </Text>
+            <Text layoutX="220.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Author: mirozspace">
+               <font>
+                  <Font name="System Italic" size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </HBox.margin>
+            </Text>
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>
