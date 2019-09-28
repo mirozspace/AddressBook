@@ -2,31 +2,35 @@ package validators;
 
 public class Validator {
 
-    public static void checkName(){
+    public static void checkName(String name) {
 
     }
 
-    public static void checkMobilePhoneNumber(){
+    public static void checkEmail(String email) {
 
     }
 
-    public static void checkAddress(){
+    public static void checkMobilePhoneNumber(String mobileNumber) {
 
     }
 
-    public static void checkHomePhoneNumber(){
+    public static void checkAddress(String address) {
 
     }
 
-    public static void checkCityName(){
+    public static void checkHomePhoneNumber(String homeNumber) {
 
     }
 
-    public static void checkCountryName(){
+    public static void checkCityName(String city) {
 
     }
 
-    public static void checkCommonString(){
+    public static void checkCountryName(String country) {
+
+    }
+
+    public static void checkCommonString(String commonString) {
 
     }
 
