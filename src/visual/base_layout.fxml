@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -14,35 +15,15 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1210.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.BaseLayoutController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1210.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visual.BaseLayoutController">
    <top>
       <MenuBar prefHeight="17.0" prefWidth="1250.0" BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
+              <MenuItem fx:id="tabExitProgram" mnemonicParsing="false" onAction="#tabExitProgramClicked" text="Exit" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-            <Menu mnemonicParsing="false" text="Help">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="About" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Help">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="About" />
-               </items>
-            </Menu>
         </menus>
       </MenuBar>
    </top>
@@ -223,36 +204,20 @@
       <VBox prefHeight="675.0" prefWidth="315.0" BorderPane.alignment="CENTER">
          <children>
             <Region prefHeight="81.0" prefWidth="315.0" />
-            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="250.0" text="Show all contacts (name)">
-               <VBox.margin>
-                  <Insets bottom="7.0" left="30.0" right="7.0" top="7.0" />
-               </VBox.margin>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="250.0" text="Button">
-               <VBox.margin>
-                  <Insets bottom="7.0" left="30.0" right="7.0" top="7.0" />
-               </VBox.margin>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="250.0" text="Button">
-               <VBox.margin>
-                  <Insets bottom="7.0" left="30.0" right="7.0" top="7.0" />
-               </VBox.margin>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="250.0" text="Button">
-               <VBox.margin>
-                  <Insets bottom="7.0" left="30.0" right="7.0" top="7.0" />
-               </VBox.margin>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="250.0" text="Button">
-               <VBox.margin>
-                  <Insets bottom="7.0" left="30.0" right="7.0" top="7.0" />
-               </VBox.margin>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="250.0" text="Button">
-               <VBox.margin>
-                  <Insets bottom="7.0" left="30.0" right="7.0" top="7.0" />
-               </VBox.margin>
-            </Button>
+            <HBox prefHeight="47.0" prefWidth="315.0">
+               <children>
+                  <ChoiceBox fx:id="choiceBox">
+                     <HBox.margin>
+                        <Insets bottom="7.0" left="30.0" right="7.0" top="7.0" />
+                     </HBox.margin>
+                  </ChoiceBox>
+                  <Button fx:id="buttonShowContacts" mnemonicParsing="false" onAction="#buttonShowContactsClicked" text="Show Contacts">
+                     <HBox.margin>
+                        <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
             <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="250.0" text="Button">
                <VBox.margin>
                   <Insets bottom="7.0" left="30.0" right="7.0" top="7.0" />
