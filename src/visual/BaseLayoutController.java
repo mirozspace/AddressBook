@@ -7,10 +7,15 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class BaseLayoutController implements Initializable {
+
+    private Engine engine;
+    private BufferedWriter bufferedWriter;
 
     @FXML
     private Label choiceBoxLabel;
@@ -33,13 +38,8 @@ public class BaseLayoutController implements Initializable {
     @FXML
     private TextField country;
 
-    public BaseLayoutController() {
-        /*this.cursors = FXCollections.observableArrayList("First Name", "Last Name", "Mobile Phone",
-                "Home Phone", "Work Phone", "Age", "City", "Country");
-        this.choiceBox = new ChoiceBox<String>();
-        choiceBox.setItems(cursors);
-        choiceBox.setValue("Name");
-        //choiceBox.*/
+    public BaseLayoutController() throws IOException {
+        this.engine = new Engine();
     }
 
 
@@ -47,7 +47,7 @@ public class BaseLayoutController implements Initializable {
 
     }
 
-    public void buttonSavePersonClicked() {
+    public void buttonSavePersonClicked() throws IOException {
         System.out.println();
         StringBuilder sb = new StringBuilder();
         sb.append(this.firstName.getText()).append(":");
@@ -75,12 +75,12 @@ public class BaseLayoutController implements Initializable {
         this.country.setText("");
     }
 
-    public void tabExitProgramClicked() {
+    public void tabExitProgramClicked() throws IOException {
         System.exit(0);
     }
 
     public void buttonShowContactsClicked() {
-        System.out.println(this.choiceBox.getValue().toString());
+        String choiceForSort = this.choiceBox.getValue().toString();
     }
 
 

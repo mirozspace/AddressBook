@@ -1,9 +1,22 @@
 package core;
 
+import models.Person;
+import repositories.PersonRepository;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class Engine {
 
-    public void takeDataPersonFromFX(String personInformation){
-        String [] personInformationArr = personInformation.split(":");
+    private PersonRepository personRepository;
+
+    public Engine() throws IOException {
+        this.personRepository = new PersonRepository();
+    }
+
+    public void takeDataPersonFromFX(String personInformation) throws IOException {
+        String[] personInformationArr = personInformation.split(":");
         String firstName = personInformationArr[0];
         String lastName = personInformationArr[1];
         String mobilePhone = personInformationArr[2];
@@ -13,9 +26,17 @@ public class Engine {
         String city = personInformationArr[6];
         String country = personInformationArr[7];
 
-        for (String s : personInformationArr) {
+        Person person = new Person(firstName, lastName, mobilePhone,
+                homePhone, workPhone, age, city, country);
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("files\\people_information.txt"));
+        //this.personRepository.getPersons().add(person);
+        bufferedWriter.write(person.toString());
+        bufferedWriter.close();
+
+        /*for (String s : personInformationArr) {
             System.out.println(s);
-        }
+        }*/
+
     }
 
 }
