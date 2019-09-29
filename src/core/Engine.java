@@ -56,7 +56,7 @@ public class Engine {
         if (!workPhone.equals(CommonConstants.EMPTY_STRING)){
             try{
                 Validator.checkName(workPhone);
-                person.setHomePhone(workPhone);
+                person.setWorkPhone(workPhone);
             }catch (Exception e){
                 controller.getTextArea().setText(ErrorMessagesAB.INVALID_WORK_NUMBER);
             }
@@ -83,7 +83,7 @@ public class Engine {
         if (!country.equals(CommonConstants.EMPTY_STRING)){
             try{
                 Validator.checkCountryName(country);
-                person.setCity(country);
+                person.setCountry(country);
             }catch (Exception e){
                 controller.getTextArea().setText(ErrorMessagesAB.INVALID_COUNTRY_NAME);
             }

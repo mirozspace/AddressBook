@@ -103,14 +103,14 @@ public class BaseLayoutController implements Initializable {
         }
 
         String city1;
-        if (this.lastName.getText().isEmpty()) {
+        if (this.city.getText().isEmpty()) {
             city1 = this.city.getText() + CommonConstants.NEW_SYMBOL;
         } else {
-            city1 = this.lastName.getText();
+            city1 = this.city.getText();
         }
 
         String country1;
-        if (this.lastName.getText().isEmpty()) {
+        if (this.country.getText().isEmpty()) {
             country1 = this.country.getText() + CommonConstants.NEW_SYMBOL;
         } else {
             country1 = this.country.getText();
