@@ -196,6 +196,9 @@
                <VBox.margin>
                   <Insets left="10.0" right="10.0" />
                </VBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
             </TextArea>
          </children>
       </VBox>
@@ -212,6 +215,20 @@
                      </HBox.margin>
                   </ChoiceBox>
                   <Button fx:id="buttonShowContacts" mnemonicParsing="false" onAction="#buttonShowContactsClicked" text="Show Contacts">
+                     <HBox.margin>
+                        <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="91.0" prefHeight="47.0" prefWidth="315.0">
+               <children>
+                  <TextField fx:id="searchedFirstName">
+                     <HBox.margin>
+                        <Insets bottom="7.0" left="30.0" right="7.0" top="7.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Button fx:id="buttonShowContacts1" mnemonicParsing="false" onAction="#buttonSearchByFirstName" text="By First Name">
                      <HBox.margin>
                         <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
                      </HBox.margin>

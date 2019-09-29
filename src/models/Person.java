@@ -58,13 +58,13 @@ public class Person {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(" -> ").append(this.getFirstName()).append(" <-> ");
-        sb.append(this.getLastName()).append(" <-> ");
-        sb.append(this.getMobilePhone()).append(" <-> ");
-        sb.append(this.getHomePhone()).append(" <-> ");
-        sb.append(this.getWorkPhone()).append(" <-> ");
-        sb.append(this.getAge()).append(" <-> ");
-        sb.append(this.getCity()).append(" <-> ");
+        sb.append(this.getFirstName()).append(" , ");
+        sb.append(this.getLastName()).append(" , ");
+        sb.append(this.getMobilePhone()).append(" , ");
+        sb.append(this.getHomePhone()).append(" , ");
+        sb.append(this.getWorkPhone()).append(" , ");
+        sb.append(this.getAge()).append(" , ");
+        sb.append(this.getCity()).append(" , ");
         sb.append(this.getCountry()).append(System.lineSeparator());
         String result = sb.toString();
         sb.delete(0, sb.length());

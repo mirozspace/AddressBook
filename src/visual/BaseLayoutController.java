@@ -8,15 +8,20 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Font;
+import models.Person;
 
 import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class BaseLayoutController implements Initializable {
 
+    @FXML
+    private TextField searchedFirstName;
     @FXML
     private TextArea textArea;
     @FXML
@@ -81,9 +86,76 @@ public class BaseLayoutController implements Initializable {
         System.exit(0);
     }
 
+    public void buttonSearchByFirstName(){
+        this.textArea.setText("");
+        try {
+            List<Person> people = new ArrayList<>();
+            BufferedReader bf = new BufferedReader(new FileReader("files\\people_information.txt"));
+            StringBuilder sb = new StringBuilder();
+            Person person = null;
+
+            String line = bf.readLine();
+            while (line != null) {
+                String[] lineArr = line.split(" , ");
+                person = new Person(lineArr[0], lineArr[1], lineArr[2], lineArr[3], lineArr[4],
+                        Integer.parseInt(lineArr[5]), lineArr[6], lineArr[7]);
+                people.add(person);
+                line = bf.readLine();
+            }
+
+            people = people.stream().filter(e-> e.getFirstName().equals(this.searchedFirstName.getText())).collect(Collectors.toList());
+
+            for (Person person1 : people) {
+                sb.append(person1.toString());
+            }
+            this.textArea.setText(sb.toString().trim());
+            sb.delete(0, sb.length());
+            bf.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void buttonShowContactsClicked() {
         String choiceForSort = this.choiceBox.getValue().toString();
-        showContacts();
+        sortingByParam(choiceForSort);
+    }
+
+    private void sortingByParam(String choiceForSort) {
+        try {
+            this.textArea.setText("");
+            List<Person> people = new ArrayList<>();
+            BufferedReader bf = new BufferedReader(new FileReader("files\\people_information.txt"));
+            StringBuilder sb = new StringBuilder();
+            Person person = null;
+
+            String line = bf.readLine();
+            while (line != null) {
+                String[] lineArr = line.split(" , ");
+                person = new Person(lineArr[0], lineArr[1], lineArr[2], lineArr[3], lineArr[4],
+                        Integer.parseInt(lineArr[5]), lineArr[6], lineArr[7]);
+                people.add(person);
+                line = bf.readLine();
+            }
+            if (choiceForSort.equalsIgnoreCase("First Name")) {
+                people = people.stream().sorted((p1, p2) -> p1.getFirstName().compareTo(p2.getFirstName())).collect(Collectors.toList());
+            } else if (choiceForSort.equalsIgnoreCase("Last Name")) {
+                people = people.stream().sorted(Comparator.comparing(Person::getLastName)).collect(Collectors.toList());
+            } else if (choiceForSort.equalsIgnoreCase("City")) {
+                people = people.stream().sorted(Comparator.comparing(Person::getCity)).collect(Collectors.toList());
+            } else if (choiceForSort.equalsIgnoreCase("Country")) {
+                people = people.stream().sorted(Comparator.comparing(Person::getCountry)).collect(Collectors.toList());
+            }
+
+            for (Person person1 : people) {
+                sb.append(person1.toString());
+            }
+            this.textArea.setText(sb.toString().trim());
+            sb.delete(0, sb.length());
+            bf.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -96,29 +168,5 @@ public class BaseLayoutController implements Initializable {
         this.choiceBox.getItems().add("Country");
         this.choiceBox.setValue("First Name");
 
-
-        //showContacts();
-    }
-
-    private void showContacts() {
-        try {
-            List<String> strings = new ArrayList<>();
-            BufferedReader bf = new BufferedReader(new FileReader("files\\people_information.txt"));
-            StringBuilder sb = new StringBuilder();
-            String line = bf.readLine();
-            while (line!= null) {
-                this.textArea.setText(line);
-                line = bf.readLine();
-                strings.add(line);
-            }
-            for (String string : strings) {
-                sb.append(string).append(System.lineSeparator());
-            }
-            this.textArea.setText(sb.toString());
-            sb.delete(0,sb.length());
-            bf.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }
