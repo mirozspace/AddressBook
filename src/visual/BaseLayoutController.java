@@ -4,7 +4,6 @@ import core.Engine;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import messages.CommonConstants;
@@ -76,6 +75,7 @@ public class BaseLayoutController implements Initializable {
         } catch (Exception e) {
             //this.textArea.setStyle("-fx-text-fill: red");
             this.textArea.setText(e.getMessage());
+            return;
             //this.textArea.setStyle("-fx-text-fill: black");
         }
 
