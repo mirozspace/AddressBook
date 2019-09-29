@@ -1,5 +1,6 @@
 package core;
 
+import messages.CommonConstants;
 import models.Person;
 import repositories.PersonRepository;
 
@@ -10,10 +11,10 @@ import java.io.PrintWriter;
 
 public class Engine {
 
-    private PersonRepository personRepository;
+    //private PersonRepository personRepository;
 
     public Engine() throws IOException {
-        this.personRepository = new PersonRepository();
+        //this.personRepository = new PersonRepository();
     }
 
     public void takeDataPersonFromFX(String personInformation) throws IOException {
@@ -30,18 +31,13 @@ public class Engine {
         Person person = new Person(firstName, lastName, mobilePhone,
                 homePhone, workPhone, age, city, country);
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("files\\people_information.txt", true));
-        //this.personRepository.getPersons().add(person);
         bufferedWriter.write(person.toString());
         bufferedWriter.close();
-
-        /*for (String s : personInformationArr) {
-            System.out.println(s);
-        }*/
 
     }
 
     public void removeAllPeopleInFile() throws IOException {
-        FileWriter fw = new FileWriter("files\\people_information.txt");
+        FileWriter fw = new FileWriter(CommonConstants.FILE_PATH);
         PrintWriter pw = new PrintWriter(fw);
         pw.write("");
         pw.flush();

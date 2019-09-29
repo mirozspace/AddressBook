@@ -4,10 +4,9 @@ import core.Engine;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Font;
+import messages.CommonConstants;
 import models.Person;
 
 import java.io.*;
@@ -43,7 +42,9 @@ public class BaseLayoutController implements Initializable {
     @FXML
     private TextField country;
 
-    public BaseLayoutController() throws IOException {
+    private final static String APPEND_SYMBOL_SB = ":";
+
+    public BaseLayoutController() {
     }
 
 
@@ -55,13 +56,13 @@ public class BaseLayoutController implements Initializable {
     public void buttonSavePersonClicked() throws IOException {
         System.out.println();
         StringBuilder sb = new StringBuilder();
-        sb.append(this.firstName.getText()).append(":");
-        sb.append(this.lastName.getText()).append(":");
-        sb.append(this.mobilePhone.getText()).append(":");
-        sb.append(this.homePhone.getText()).append(":");
-        sb.append(this.workPhone.getText()).append(":");
-        sb.append(this.age.getText()).append(":");
-        sb.append(this.city.getText()).append(":");
+        sb.append(this.firstName.getText()).append(APPEND_SYMBOL_SB);
+        sb.append(this.lastName.getText()).append(APPEND_SYMBOL_SB);
+        sb.append(this.mobilePhone.getText()).append(APPEND_SYMBOL_SB);
+        sb.append(this.homePhone.getText()).append(APPEND_SYMBOL_SB);
+        sb.append(this.workPhone.getText()).append(APPEND_SYMBOL_SB);
+        sb.append(this.age.getText()).append(APPEND_SYMBOL_SB);
+        sb.append(this.city.getText()).append(APPEND_SYMBOL_SB);
         sb.append(this.country.getText());
         Engine engine = new Engine();
         String dataLinePerson = sb.toString();
@@ -70,40 +71,38 @@ public class BaseLayoutController implements Initializable {
     }
 
     public void buttonResetPersonClicked() {
-        this.firstName.setText("");
-        this.lastName.setText("");
-        this.mobilePhone.setText("");
-        this.homePhone.setText("");
-        this.workPhone.setText("");
-        this.age.setText("");
-        this.city.setText("");
-        this.country.setText("");
+        this.firstName.setText(null);
+        this.lastName.setText(null);
+        this.mobilePhone.setText(null);
+        this.homePhone.setText(null);
+        this.workPhone.setText(null);
+        this.age.setText(null);
+        this.city.setText(null);
+        this.country.setText(null);
     }
 
-    public void tabExitProgramClicked() throws IOException {
-        Engine engine = new Engine();
-        //engine.removeAllPeopleInFile();
+    public void tabExitProgramClicked() {
         System.exit(0);
     }
 
-    public void buttonSearchByFirstName(){
-        this.textArea.setText("");
+    public void buttonSearchByFirstName() {
+        this.textArea.setText(null);
         try {
             List<Person> people = new ArrayList<>();
-            BufferedReader bf = new BufferedReader(new FileReader("files\\people_information.txt"));
+            BufferedReader bf = new BufferedReader(new FileReader(CommonConstants.FILE_PATH));
             StringBuilder sb = new StringBuilder();
-            Person person = null;
+            Person person;
 
             String line = bf.readLine();
             while (line != null) {
-                String[] lineArr = line.split(" , ");
+                String[] lineArr = line.split(CommonConstants.ARRAY_DELIMITER);
                 person = new Person(lineArr[0], lineArr[1], lineArr[2], lineArr[3], lineArr[4],
                         Integer.parseInt(lineArr[5]), lineArr[6], lineArr[7]);
                 people.add(person);
                 line = bf.readLine();
             }
 
-            people = people.stream().filter(e-> e.getFirstName().equals(this.searchedFirstName.getText())).collect(Collectors.toList());
+            people = people.stream().filter(e -> e.getFirstName().equals(this.searchedFirstName.getText())).collect(Collectors.toList());
 
             for (Person person1 : people) {
                 sb.append(person1.toString());
@@ -123,27 +122,27 @@ public class BaseLayoutController implements Initializable {
 
     private void sortingByParam(String choiceForSort) {
         try {
-            this.textArea.setText("");
+            this.textArea.setText(null);
             List<Person> people = new ArrayList<>();
-            BufferedReader bf = new BufferedReader(new FileReader("files\\people_information.txt"));
+            BufferedReader bf = new BufferedReader(new FileReader(CommonConstants.FILE_PATH));
             StringBuilder sb = new StringBuilder();
-            Person person = null;
+            Person person;
 
             String line = bf.readLine();
             while (line != null) {
-                String[] lineArr = line.split(" , ");
+                String[] lineArr = line.split(CommonConstants.ARRAY_DELIMITER);
                 person = new Person(lineArr[0], lineArr[1], lineArr[2], lineArr[3], lineArr[4],
                         Integer.parseInt(lineArr[5]), lineArr[6], lineArr[7]);
                 people.add(person);
                 line = bf.readLine();
             }
-            if (choiceForSort.equalsIgnoreCase("First Name")) {
-                people = people.stream().sorted((p1, p2) -> p1.getFirstName().compareTo(p2.getFirstName())).collect(Collectors.toList());
-            } else if (choiceForSort.equalsIgnoreCase("Last Name")) {
+            if (choiceForSort.equalsIgnoreCase(CommonConstants.FIRST_NAME)) {
+                people = people.stream().sorted(Comparator.comparing(Person::getFirstName)).collect(Collectors.toList());
+            } else if (choiceForSort.equalsIgnoreCase(CommonConstants.LAST_NAME)) {
                 people = people.stream().sorted(Comparator.comparing(Person::getLastName)).collect(Collectors.toList());
-            } else if (choiceForSort.equalsIgnoreCase("City")) {
+            } else if (choiceForSort.equalsIgnoreCase(CommonConstants.CITY)) {
                 people = people.stream().sorted(Comparator.comparing(Person::getCity)).collect(Collectors.toList());
-            } else if (choiceForSort.equalsIgnoreCase("Country")) {
+            } else if (choiceForSort.equalsIgnoreCase(CommonConstants.COUNTRY)) {
                 people = people.stream().sorted(Comparator.comparing(Person::getCountry)).collect(Collectors.toList());
             }
 
@@ -162,11 +161,11 @@ public class BaseLayoutController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        this.choiceBox.getItems().add("First Name");
-        this.choiceBox.getItems().add("Last Name");
-        this.choiceBox.getItems().add("City");
-        this.choiceBox.getItems().add("Country");
-        this.choiceBox.setValue("First Name");
+        this.choiceBox.getItems().add(CommonConstants.FIRST_NAME);
+        this.choiceBox.getItems().add(CommonConstants.LAST_NAME);
+        this.choiceBox.getItems().add(CommonConstants.CITY);
+        this.choiceBox.getItems().add(CommonConstants.COUNTRY);
+        this.choiceBox.setValue(CommonConstants.FIRST_NAME);
 
     }
 }
