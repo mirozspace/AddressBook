@@ -6,6 +6,7 @@ import repositories.PersonRepository;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class Engine {
 
@@ -28,7 +29,7 @@ public class Engine {
 
         Person person = new Person(firstName, lastName, mobilePhone,
                 homePhone, workPhone, age, city, country);
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("files\\people_information.txt"));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("files\\people_information.txt", true));
         //this.personRepository.getPersons().add(person);
         bufferedWriter.write(person.toString());
         bufferedWriter.close();
@@ -37,6 +38,14 @@ public class Engine {
             System.out.println(s);
         }*/
 
+    }
+
+    public void removeAllPeopleInFile() throws IOException {
+        FileWriter fw = new FileWriter("files\\people_information.txt");
+        PrintWriter pw = new PrintWriter(fw);
+        pw.write("");
+        pw.flush();
+        pw.close();
     }
 
 }

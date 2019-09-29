@@ -65,7 +65,7 @@ public class Person {
         sb.append(this.getWorkPhone()).append(" <-> ");
         sb.append(this.getAge()).append(" <-> ");
         sb.append(this.getCity()).append(" <-> ");
-        sb.append(this.getCountry());
+        sb.append(this.getCountry()).append(System.lineSeparator());
         String result = sb.toString();
         sb.delete(0, sb.length());
         return result;

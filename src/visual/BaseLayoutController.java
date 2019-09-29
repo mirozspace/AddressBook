@@ -5,20 +5,20 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Font;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class BaseLayoutController implements Initializable {
 
-    private Engine engine;
-    private BufferedWriter bufferedWriter;
-
     @FXML
-    private Label choiceBoxLabel;
+    private TextArea textArea;
     @FXML
     private ChoiceBox choiceBox;
     @FXML
@@ -39,12 +39,12 @@ public class BaseLayoutController implements Initializable {
     private TextField country;
 
     public BaseLayoutController() throws IOException {
-        this.engine = new Engine();
     }
 
 
-    public void removeAllContacts() {
-
+    public void removeAllContacts() throws IOException {
+        Engine engine = new Engine();
+        engine.removeAllPeopleInFile();
     }
 
     public void buttonSavePersonClicked() throws IOException {
@@ -76,11 +76,14 @@ public class BaseLayoutController implements Initializable {
     }
 
     public void tabExitProgramClicked() throws IOException {
+        Engine engine = new Engine();
+        //engine.removeAllPeopleInFile();
         System.exit(0);
     }
 
     public void buttonShowContactsClicked() {
         String choiceForSort = this.choiceBox.getValue().toString();
+        showContacts();
     }
 
 
@@ -93,5 +96,29 @@ public class BaseLayoutController implements Initializable {
         this.choiceBox.getItems().add("Country");
         this.choiceBox.setValue("First Name");
 
+
+        //showContacts();
+    }
+
+    private void showContacts() {
+        try {
+            List<String> strings = new ArrayList<>();
+            BufferedReader bf = new BufferedReader(new FileReader("files\\people_information.txt"));
+            StringBuilder sb = new StringBuilder();
+            String line = bf.readLine();
+            while (line!= null) {
+                this.textArea.setText(line);
+                line = bf.readLine();
+                strings.add(line);
+            }
+            for (String string : strings) {
+                sb.append(string).append(System.lineSeparator());
+            }
+            this.textArea.setText(sb.toString());
+            sb.delete(0,sb.length());
+            bf.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
