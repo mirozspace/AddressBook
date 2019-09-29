@@ -58,19 +58,39 @@ public class Person {
         return country;
     }
 
+    public String makePersonLineForPerson() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(this.firstName).append(CommonConstants.ARRAY_DELIMITER1);
+        sb.append(this.lastName).append(CommonConstants.ARRAY_DELIMITER1);
+        sb.append(this.mobilePhone).append(CommonConstants.ARRAY_DELIMITER1);
+        sb.append(this.homePhone).append(CommonConstants.ARRAY_DELIMITER1);
+        sb.append(this.workPhone).append(CommonConstants.ARRAY_DELIMITER1);
+        sb.append(this.age).append(CommonConstants.ARRAY_DELIMITER1);
+        sb.append(this.city).append(CommonConstants.ARRAY_DELIMITER1);
+        sb.append(this.country).append(System.lineSeparator());
+
+        String result = sb.toString();
+        sb.delete(0, sb.length());
+        return result;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(this.getFirstName()).append(CommonConstants.ARRAY_DELIMITER1);
-        sb.append(this.getLastName()).append(CommonConstants.ARRAY_DELIMITER1);
-        sb.append(this.getMobilePhone()).append(CommonConstants.ARRAY_DELIMITER1);
-        sb.append(this.getHomePhone()).append(CommonConstants.ARRAY_DELIMITER1);
-        sb.append(this.getWorkPhone()).append(CommonConstants.ARRAY_DELIMITER1);
-        sb.append(this.getAge()).append(CommonConstants.ARRAY_DELIMITER1);
-        sb.append(this.getCity()).append(CommonConstants.ARRAY_DELIMITER1);
-        sb.append(this.getCountry()).append(System.lineSeparator());
+
+        sb.append(CommonConstants.FIRST_NAME).append(CommonConstants.ARRAY_DELIMITER3).append(this.getFirstName()).append(CommonConstants.ARRAY_DELIMITER4);
+        sb.append(CommonConstants.LAST_NAME).append(CommonConstants.ARRAY_DELIMITER3).append(this.getLastName()).append(CommonConstants.ARRAY_DELIMITER4);
+        sb.append(CommonConstants.MOBILE_PHONE).append(CommonConstants.ARRAY_DELIMITER3).append(this.getMobilePhone()).append(CommonConstants.ARRAY_DELIMITER4);
+        sb.append(CommonConstants.HOME_PHONE).append(CommonConstants.ARRAY_DELIMITER3).append(this.getHomePhone()).append(CommonConstants.ARRAY_DELIMITER4);
+        sb.append(CommonConstants.WORK_PHONE).append(CommonConstants.ARRAY_DELIMITER3).append(this.getWorkPhone()).append(CommonConstants.ARRAY_DELIMITER4);
+        sb.append(CommonConstants.AGES).append(CommonConstants.ARRAY_DELIMITER3).append(this.getAge()).append(CommonConstants.ARRAY_DELIMITER4);
+        sb.append(CommonConstants.CITY).append(CommonConstants.ARRAY_DELIMITER3).append(this.getCity()).append(CommonConstants.ARRAY_DELIMITER4);
+        sb.append(CommonConstants.COUNTRY).append(CommonConstants.ARRAY_DELIMITER3).append(this.getCountry()).append(System.lineSeparator());
+        //sb.append("---").append(System.lineSeparator());
         String result = sb.toString();
         sb.delete(0, sb.length());
+
         return result;
     }
 }

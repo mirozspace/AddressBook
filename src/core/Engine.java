@@ -30,7 +30,8 @@ public class Engine {
         Person person = new Person(firstName, lastName, mobilePhone,
                 homePhone, workPhone, age, city, country);
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(CommonConstants.FILE_PATH, true));
-        bufferedWriter.write(person.toString());
+
+        bufferedWriter.write(person.makePersonLineForPerson());
         bufferedWriter.close();
 
     }
