@@ -3,3 +3,5 @@ You have to think about:
 - id for every person;
 - delete person by ID;
 - beautiful print format for every person;
+- import email to person
+- if no date in person write "No information";

@@ -11,4 +11,6 @@ public class CommonConstants {
     public final static String CITY = "City";
     public final static String COUNTRY = "Country";
 
+    public static final String URL_FACEBOOK = "http://facebook.com/zstefchev3";
+    public static final String NO_RESULTS = "No results";
 }

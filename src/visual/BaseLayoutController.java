@@ -140,7 +140,7 @@ public class BaseLayoutController implements Initializable {
 
     private void showAnyResultOtSetNothing(String result) {
         if (result.equals("")) {
-            this.textArea.setText("No results");
+            this.textArea.setText(CommonConstants.NO_RESULTS);
         } else {
             this.textArea.setText(result);
         }
@@ -148,7 +148,7 @@ public class BaseLayoutController implements Initializable {
 
     public void facebookLinkClicked() throws IOException, URISyntaxException {
         Desktop d = Desktop.getDesktop();
-        d.browse(new URI("http://facebook.com/zstefchev3"));
+        d.browse(new URI(CommonConstants.URL_FACEBOOK));
     }
 
     public void buttonShowContactsClicked() {
