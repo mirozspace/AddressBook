@@ -64,7 +64,7 @@
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="lastName" prefHeight="0.0" prefWidth="149.0">
+                  <TextField fx:id="lastName" prefHeight="0.0" prefWidth="149.0" promptText="It is not reqired">
                      <HBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
@@ -81,7 +81,7 @@
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="mobilePhone" prefHeight="0.0" prefWidth="149.0">
+                  <TextField fx:id="mobilePhone" prefHeight="0.0" prefWidth="149.0" promptText="Reqired">
                      <HBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
@@ -98,7 +98,7 @@
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="homePhone" prefHeight="0.0" prefWidth="149.0">
+                  <TextField fx:id="homePhone" prefHeight="0.0" prefWidth="149.0" promptText="It is not reqired">
                      <HBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
@@ -115,7 +115,7 @@
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="workPhone" prefHeight="0.0" prefWidth="149.0">
+                  <TextField fx:id="workPhone" prefHeight="0.0" prefWidth="149.0" promptText="It is not reqired">
                      <HBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
@@ -132,7 +132,7 @@
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="age" prefHeight="0.0" prefWidth="149.0">
+                  <TextField fx:id="age" prefHeight="0.0" prefWidth="149.0" promptText="It is not reqired">
                      <HBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
@@ -149,7 +149,7 @@
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="city" prefHeight="0.0" prefWidth="149.0">
+                  <TextField fx:id="city" prefHeight="0.0" prefWidth="149.0" promptText="It is not reqired">
                      <HBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
@@ -166,7 +166,7 @@
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="country" prefHeight="0.0" prefWidth="149.0">
+                  <TextField fx:id="country" prefHeight="0.0" prefWidth="149.0" promptText="It is not reqired">
                      <HBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>

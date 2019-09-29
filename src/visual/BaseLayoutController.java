@@ -59,8 +59,6 @@ public class BaseLayoutController implements Initializable {
 
     public void buttonSavePersonClicked() throws IOException {
 
-        System.out.println();
-
         try {
             Validator.checkName(this.firstName.getText());
             Validator.checkName(this.lastName.getText());
