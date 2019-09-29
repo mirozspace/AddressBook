@@ -51,6 +51,9 @@ public class BaseLayoutController implements Initializable {
     public BaseLayoutController() {
     }
 
+    public TextArea getTextArea() {
+        return textArea;
+    }
 
     public void removeAllContacts() throws IOException {
         Engine engine = new Engine();
@@ -61,13 +64,7 @@ public class BaseLayoutController implements Initializable {
 
         try {
             Validator.checkName(this.firstName.getText());
-            Validator.checkName(this.lastName.getText());
             Validator.checkMobilePhoneNumber(this.mobilePhone.getText());
-            Validator.checkHomePhoneNumber(this.homePhone.getText());
-            Validator.checkWorkPhoneNumber(this.workPhone.getText());
-            Validator.checkAge(Integer.parseInt(this.age.getText()));
-            Validator.checkCityName(this.city.getText());
-            Validator.checkCountryName(this.country.getText());
 
             this.textArea.setText("Successful record!");
         } catch (Exception e) {
@@ -77,15 +74,60 @@ public class BaseLayoutController implements Initializable {
             //this.textArea.setStyle("-fx-text-fill: black");
         }
 
+        String lastName1;
+        if (this.lastName.getText().isEmpty()) {
+            lastName1 = this.lastName.getText() + CommonConstants.NEW_SYMBOL;
+        } else {
+            lastName1 = this.lastName.getText();
+        }
+
+        String homePhone1;
+        if (this.homePhone.getText().isEmpty()) {
+            homePhone1 = this.homePhone.getText() + CommonConstants.NEW_SYMBOL;
+        } else {
+            homePhone1 = this.homePhone.getText();
+        }
+
+        String workPhone1;
+        if (this.workPhone.getText().isEmpty()) {
+            workPhone1 = this.workPhone.getText() + CommonConstants.NEW_SYMBOL;
+        } else {
+            workPhone1 = this.workPhone.getText();
+        }
+
+        String age1;
+        if (this.age.getText().isEmpty()) {
+            age1 = this.age.getText() + CommonConstants.NEW_SYMBOL;
+        } else {
+            age1 = this.age.getText();
+        }
+
+        String city1;
+        if (this.lastName.getText().isEmpty()) {
+            city1 = this.city.getText() + CommonConstants.NEW_SYMBOL;
+        } else {
+            city1 = this.lastName.getText();
+        }
+
+        String country1;
+        if (this.lastName.getText().isEmpty()) {
+            country1 = this.country.getText() + CommonConstants.NEW_SYMBOL;
+        } else {
+            country1 = this.country.getText();
+        }
+
+        //========
+
         StringBuilder sb = new StringBuilder();
         sb.append(this.firstName.getText()).append(APPEND_SYMBOL_SB);
-        sb.append(this.lastName.getText()).append(APPEND_SYMBOL_SB);
+        sb.append(lastName1).append(APPEND_SYMBOL_SB);
         sb.append(this.mobilePhone.getText()).append(APPEND_SYMBOL_SB);
-        sb.append(this.homePhone.getText()).append(APPEND_SYMBOL_SB);
-        sb.append(this.workPhone.getText()).append(APPEND_SYMBOL_SB);
-        sb.append(this.age.getText()).append(APPEND_SYMBOL_SB);
-        sb.append(this.city.getText()).append(APPEND_SYMBOL_SB);
-        sb.append(this.country.getText());
+        sb.append(homePhone1).append(APPEND_SYMBOL_SB);
+        sb.append(workPhone1).append(APPEND_SYMBOL_SB);
+        sb.append(age1).append(APPEND_SYMBOL_SB);
+        sb.append(city1).append(APPEND_SYMBOL_SB);
+        sb.append(country1);
+
         Engine engine = new Engine();
         String dataLinePerson = sb.toString();
         sb.delete(0, sb.length());
@@ -118,12 +160,11 @@ public class BaseLayoutController implements Initializable {
             String line = bf.readLine();
             while (line != null) {
                 String[] lineArr = line.split(CommonConstants.ARRAY_DELIMITER1);
-                person = new Person(lineArr[0], lineArr[1], lineArr[2], lineArr[3], lineArr[4],
-                        Integer.parseInt(lineArr[5]), lineArr[6], lineArr[7]);
+                person = getPerson(lineArr);
                 people.add(person);
                 line = bf.readLine();
             }
-            people = people.stream().filter(e -> e.getFirstName().equals(this.searchedFirstName.getText())).collect(Collectors.toList());
+            people = people.stream().filter(e -> e.getFirstName().equalsIgnoreCase(this.searchedFirstName.getText())).collect(Collectors.toList());
             for (Person person1 : people) {
                 sb.append(person1.toString());
             }
@@ -134,6 +175,18 @@ public class BaseLayoutController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private Person getPerson(String[] lineArr) {
+        Person person;
+        person = new Person(lineArr[0], lineArr[2]);
+        person.setLastName(lineArr[1]);
+        person.setHomePhone(lineArr[3]);
+        person.setWorkPhone(lineArr[4]);
+        person.setAge(Integer.parseInt(lineArr[5]));
+        person.setCity(lineArr[6]);
+        person.setCountry(lineArr[7]);
+        return person;
     }
 
     private void showAnyResultOtSetNothing(String result) {
@@ -151,14 +204,6 @@ public class BaseLayoutController implements Initializable {
 
     public void buttonShowContactsClicked() {
         String choiceForSort = this.choiceBox.getValue();
-        sortingByParam(choiceForSort);
-    }
-
-    public void buttonClearTextAreaClicked() {
-        this.textArea.setText("");
-    }
-
-    private void sortingByParam(String choiceForSort) {
         try {
             this.textArea.setText(null);
             List<Person> people = new ArrayList<>();
@@ -169,9 +214,9 @@ public class BaseLayoutController implements Initializable {
             String line = bf.readLine();
             while (line != null) {
                 String[] lineArr = line.split(CommonConstants.ARRAY_DELIMITER1);
-                person = new Person(lineArr[0], lineArr[1], lineArr[2], lineArr[3], lineArr[4],
-                        Integer.parseInt(lineArr[5]), lineArr[6], lineArr[7]);
+                person = getPerson(lineArr);
                 people.add(person);
+
                 line = bf.readLine();
             }
             if (choiceForSort.equalsIgnoreCase(CommonConstants.FIRST_NAME)) {
@@ -196,6 +241,9 @@ public class BaseLayoutController implements Initializable {
         }
     }
 
+    public void buttonClearTextAreaClicked() {
+        this.textArea.setText("");
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
