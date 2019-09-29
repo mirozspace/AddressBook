@@ -2,6 +2,7 @@ package models;
 
 import messages.CommonConstants;
 
+@SuppressWarnings("CanBeFinal")
 public class Person {
     private String firstName;
     private String lastName;
@@ -33,19 +34,19 @@ public class Person {
         return lastName;
     }
 
-    public String getMobilePhone() {
+    private String getMobilePhone() {
         return mobilePhone;
     }
 
-    public String getHomePhone() {
+    private String getHomePhone() {
         return homePhone;
     }
 
-    public String getWorkPhone() {
+    private String getWorkPhone() {
         return workPhone;
     }
 
-    public int getAge() {
+    private int getAge() {
         return age;
     }
 
@@ -60,13 +61,13 @@ public class Person {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(this.getFirstName()).append(CommonConstants.ARRAY_DELIMITER);
-        sb.append(this.getLastName()).append(CommonConstants.ARRAY_DELIMITER);
-        sb.append(this.getMobilePhone()).append(CommonConstants.ARRAY_DELIMITER);
-        sb.append(this.getHomePhone()).append(CommonConstants.ARRAY_DELIMITER);
-        sb.append(this.getWorkPhone()).append(CommonConstants.ARRAY_DELIMITER);
-        sb.append(this.getAge()).append(CommonConstants.ARRAY_DELIMITER);
-        sb.append(this.getCity()).append(CommonConstants.ARRAY_DELIMITER);
+        sb.append(this.getFirstName()).append(CommonConstants.ARRAY_DELIMITER1);
+        sb.append(this.getLastName()).append(CommonConstants.ARRAY_DELIMITER1);
+        sb.append(this.getMobilePhone()).append(CommonConstants.ARRAY_DELIMITER1);
+        sb.append(this.getHomePhone()).append(CommonConstants.ARRAY_DELIMITER1);
+        sb.append(this.getWorkPhone()).append(CommonConstants.ARRAY_DELIMITER1);
+        sb.append(this.getAge()).append(CommonConstants.ARRAY_DELIMITER1);
+        sb.append(this.getCity()).append(CommonConstants.ARRAY_DELIMITER1);
         sb.append(this.getCountry()).append(System.lineSeparator());
         String result = sb.toString();
         sb.delete(0, sb.length());

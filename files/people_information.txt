@@ -1,7 +1,1 @@
-Desi , Ivanova , 1 , 2 , 3 , 22 , Sofia , Bulgaria
-Angel , Ivanov ,  ,  ,  , 18 , Ruse , Bulgaria
-Ani , Ani , 1 , 1 , 1 , 19 , Asenovgrad , Bulgaria
-Ivanka , Angelova , 1 , 1 , 1 , 21 , Burgas , Angola
-Cveti , Stefanova , 00000000 , 00000000 , 000000000 , 31 , Svilengrad , Bulgaria
-Cveti , Ivanova , 00000000 , 00000000 , 000000000 , 35 , Svilengrad , Bulgaria
-Kiro , Radulov , 0 , 1 , 2 , 45 , Ruse , Bulgaria
+Ivan , Petkov , +359888123125 , 000 , 000 , 25 , Ruse , Bulgaria

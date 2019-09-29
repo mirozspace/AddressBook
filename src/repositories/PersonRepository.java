@@ -5,7 +5,8 @@ import models.Person;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PersonRepository {
+@SuppressWarnings({"CanBeFinal", "unused"})
+class PersonRepository {
 
     private List<Person> persons;
 

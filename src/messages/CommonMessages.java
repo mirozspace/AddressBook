@@ -1,4 +1,5 @@
 package messages;
 
-public class CommonMessages {
+@SuppressWarnings("unused")
+class CommonMessages {
 }

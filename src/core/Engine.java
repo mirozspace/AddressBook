@@ -2,7 +2,6 @@ package core;
 
 import messages.CommonConstants;
 import models.Person;
-import repositories.PersonRepository;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -13,12 +12,12 @@ public class Engine {
 
     //private PersonRepository personRepository;
 
-    public Engine() throws IOException {
+    public Engine(){
         //this.personRepository = new PersonRepository();
     }
 
     public void takeDataPersonFromFX(String personInformation) throws IOException {
-        String[] personInformationArr = personInformation.split(":");
+        String[] personInformationArr = personInformation.split(CommonConstants.ARRAY_DELIMITER2);
         String firstName = personInformationArr[0];
         String lastName = personInformationArr[1];
         String mobilePhone = personInformationArr[2];
@@ -30,7 +29,7 @@ public class Engine {
 
         Person person = new Person(firstName, lastName, mobilePhone,
                 homePhone, workPhone, age, city, country);
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("files\\people_information.txt", true));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(CommonConstants.FILE_PATH, true));
         bufferedWriter.write(person.toString());
         bufferedWriter.close();
 

@@ -4,12 +4,17 @@ import core.Engine;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import messages.CommonConstants;
 import models.Person;
+import validators.Validator;
 
+import java.awt.*;
 import java.io.*;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -24,7 +29,7 @@ public class BaseLayoutController implements Initializable {
     @FXML
     private TextArea textArea;
     @FXML
-    private ChoiceBox choiceBox;
+    private ChoiceBox<String> choiceBox;
     @FXML
     private TextField firstName;
     @FXML
@@ -54,7 +59,26 @@ public class BaseLayoutController implements Initializable {
     }
 
     public void buttonSavePersonClicked() throws IOException {
+
         System.out.println();
+
+        try {
+            Validator.checkName(this.firstName.getText());
+            Validator.checkName(this.lastName.getText());
+            Validator.checkMobilePhoneNumber(this.mobilePhone.getText());
+            Validator.checkHomePhoneNumber(this.homePhone.getText());
+            Validator.checkWorkPhoneNumber(this.workPhone.getText());
+            Validator.checkAge(Integer.parseInt(this.age.getText()));
+            Validator.checkCityName(this.city.getText());
+            Validator.checkCountryName(this.country.getText());
+
+            this.textArea.setText("Successful record!");
+        } catch (Exception e) {
+            //this.textArea.setStyle("-fx-text-fill: red");
+            this.textArea.setText(e.getMessage());
+            //this.textArea.setStyle("-fx-text-fill: black");
+        }
+
         StringBuilder sb = new StringBuilder();
         sb.append(this.firstName.getText()).append(APPEND_SYMBOL_SB);
         sb.append(this.lastName.getText()).append(APPEND_SYMBOL_SB);
@@ -95,19 +119,18 @@ public class BaseLayoutController implements Initializable {
 
             String line = bf.readLine();
             while (line != null) {
-                String[] lineArr = line.split(CommonConstants.ARRAY_DELIMITER);
+                String[] lineArr = line.split(CommonConstants.ARRAY_DELIMITER1);
                 person = new Person(lineArr[0], lineArr[1], lineArr[2], lineArr[3], lineArr[4],
                         Integer.parseInt(lineArr[5]), lineArr[6], lineArr[7]);
                 people.add(person);
                 line = bf.readLine();
             }
-
             people = people.stream().filter(e -> e.getFirstName().equals(this.searchedFirstName.getText())).collect(Collectors.toList());
-
             for (Person person1 : people) {
                 sb.append(person1.toString());
             }
-            this.textArea.setText(sb.toString().trim());
+            String result = sb.toString().trim();
+            showAnyResultOtSetNothing(result);
             sb.delete(0, sb.length());
             bf.close();
         } catch (IOException e) {
@@ -115,9 +138,26 @@ public class BaseLayoutController implements Initializable {
         }
     }
 
+    private void showAnyResultOtSetNothing(String result) {
+        if (result.equals("")) {
+            this.textArea.setText("No results");
+        } else {
+            this.textArea.setText(result);
+        }
+    }
+
+    public void facebookLinkClicked() throws IOException, URISyntaxException {
+        Desktop d = Desktop.getDesktop();
+        d.browse(new URI("http://facebook.com/zstefchev3"));
+    }
+
     public void buttonShowContactsClicked() {
-        String choiceForSort = this.choiceBox.getValue().toString();
+        String choiceForSort = this.choiceBox.getValue();
         sortingByParam(choiceForSort);
+    }
+
+    public void buttonClearTextAreaClicked() {
+        this.textArea.setText("");
     }
 
     private void sortingByParam(String choiceForSort) {
@@ -130,7 +170,7 @@ public class BaseLayoutController implements Initializable {
 
             String line = bf.readLine();
             while (line != null) {
-                String[] lineArr = line.split(CommonConstants.ARRAY_DELIMITER);
+                String[] lineArr = line.split(CommonConstants.ARRAY_DELIMITER1);
                 person = new Person(lineArr[0], lineArr[1], lineArr[2], lineArr[3], lineArr[4],
                         Integer.parseInt(lineArr[5]), lineArr[6], lineArr[7]);
                 people.add(person);
@@ -149,7 +189,8 @@ public class BaseLayoutController implements Initializable {
             for (Person person1 : people) {
                 sb.append(person1.toString());
             }
-            this.textArea.setText(sb.toString().trim());
+            String result = sb.toString().trim();
+            showAnyResultOtSetNothing(result);
             sb.delete(0, sb.length());
             bf.close();
         } catch (IOException e) {
