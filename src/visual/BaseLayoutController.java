@@ -51,15 +51,24 @@ public class BaseLayoutController implements Initializable {
     public BaseLayoutController() {
     }
 
+    //SETTERS ===
+
+    //GETTERS ===
+
+    /**
+     * get info from Text Area
+     * @return
+     */
     public TextArea getTextArea() {
         return textArea;
     }
 
-    public void removeAllContacts() throws IOException {
-        Engine engine = new Engine();
-        engine.removeAllPeopleInFile();
-    }
+    //BUTTONS ===
 
+    /**
+     * Save button for a one Person to our Data Base (txt file)
+     * @throws IOException
+     */
     public void buttonSavePersonClicked() throws IOException {
 
         try {
@@ -134,6 +143,9 @@ public class BaseLayoutController implements Initializable {
         engine.takeDataPersonFromFX(dataLinePerson);
     }
 
+    /**
+     * Reset all fields for Person in our FX form
+     */
     public void buttonResetPersonClicked() {
         this.firstName.setText(null);
         this.lastName.setText(null);
@@ -145,10 +157,9 @@ public class BaseLayoutController implements Initializable {
         this.country.setText(null);
     }
 
-    public void tabExitProgramClicked() {
-        System.exit(0);
-    }
-
+    /**
+     * Sear Result by First Name
+     */
     public void buttonSearchByFirstName() {
         this.textArea.setText(null);
         try {
@@ -169,7 +180,7 @@ public class BaseLayoutController implements Initializable {
                 sb.append(person1.toString());
             }
             String result = sb.toString().trim();
-            showAnyResultOtSetNothing(result);
+            showAnyResultOrSetNothing(result);
             sb.delete(0, sb.length());
             bf.close();
         } catch (IOException e) {
@@ -177,6 +188,11 @@ public class BaseLayoutController implements Initializable {
         }
     }
 
+    /**
+     * Crate one person from 1d array
+     * @param lineArr
+     * @return
+     */
     private Person getPerson(String[] lineArr) {
         Person person;
         person = new Person(lineArr[0], lineArr[2]);
@@ -189,7 +205,11 @@ public class BaseLayoutController implements Initializable {
         return person;
     }
 
-    private void showAnyResultOtSetNothing(String result) {
+    /**
+     * Show Any Result Or Set Nothing (empty)
+     * @param result
+     */
+    private void showAnyResultOrSetNothing(String result) {
         if (result.equals("")) {
             this.textArea.setText(CommonConstants.NO_RESULTS);
         } else {
@@ -197,11 +217,9 @@ public class BaseLayoutController implements Initializable {
         }
     }
 
-    public void facebookLinkClicked() throws IOException, URISyntaxException {
-        Desktop d = Desktop.getDesktop();
-        d.browse(new URI(CommonConstants.URL_FACEBOOK));
-    }
-
+    /**
+     * Displays contacts sorted by criteria from FX form.
+     */
     public void buttonShowContactsClicked() {
         String choiceForSort = this.choiceBox.getValue();
         try {
@@ -233,7 +251,7 @@ public class BaseLayoutController implements Initializable {
                 sb.append(person1.toString());
             }
             String result = sb.toString().trim();
-            showAnyResultOtSetNothing(result);
+            showAnyResultOrSetNothing(result);
             sb.delete(0, sb.length());
             bf.close();
         } catch (IOException e) {
@@ -241,10 +259,40 @@ public class BaseLayoutController implements Initializable {
         }
     }
 
+    /**
+     * Clear Text Area
+     */
     public void buttonClearTextAreaClicked() {
         this.textArea.setText("");
     }
 
+    /**
+     * Remove all contacts from txt file
+     * @throws IOException
+     */
+    public void buttonRemoveAllContacts() throws IOException {
+        Engine engine = new Engine();
+        engine.removeAllPeopleInFile();
+    }
+
+    /**
+     * Tab from top menu. Exit from program
+     */
+    public void tabExitProgramClicked() {
+        System.exit(0);
+    }
+
+    /**
+     * When we click on lin for facebook site
+     * @throws IOException
+     * @throws URISyntaxException
+     */
+    public void facebookLinkClicked() throws IOException, URISyntaxException {
+        Desktop d = Desktop.getDesktop();
+        d.browse(new URI(CommonConstants.URL_FACEBOOK));
+    }
+
+    //FROM INTERFACE
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

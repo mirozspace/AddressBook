@@ -260,7 +260,7 @@
                   <Insets bottom="7.0" left="30.0" right="7.0" top="7.0" />
                </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#removeAllContacts" prefHeight="35.0" prefWidth="250.0" text="Remove all contacts" textAlignment="CENTER" textFill="#b21414">
+            <Button mnemonicParsing="false" onAction="#buttonRemoveAllContacts" prefHeight="35.0" prefWidth="250.0" text="Remove all contacts" textAlignment="CENTER" textFill="#b21414">
                <VBox.margin>
                   <Insets bottom="7.0" left="30.0" right="7.0" top="7.0" />
                </VBox.margin>
