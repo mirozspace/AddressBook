@@ -14,7 +14,7 @@ public class Person {
     private String city;
     private String country;
 
-    /*public Person(String firstName, String lastName, String mobilePhone, String homePhone,
+    public Person(String firstName, String lastName, String mobilePhone, String homePhone,
                   String workPhone, int age, String city, String country) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -24,7 +24,7 @@ public class Person {
         this.age = age;
         this.city = city;
         this.country = country;
-    }*/
+    }
 
     public Person(String firstName, String mobilePhone) {
         this.firstName = firstName;
@@ -69,7 +69,7 @@ public class Person {
         return lastName;
     }
 
-    private String getMobilePhone() {
+    public String getMobilePhone() {
         return mobilePhone;
     }
 

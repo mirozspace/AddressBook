@@ -255,6 +255,20 @@
                   </Button>
                </children>
             </HBox>
+            <HBox layoutX="10.0" layoutY="173.0" prefHeight="47.0" prefWidth="315.0">
+               <children>
+                  <TextField fx:id="fieldDeleteByMobilePhone" promptText="Delete by Phone">
+                     <HBox.margin>
+                        <Insets bottom="7.0" left="30.0" right="7.0" top="7.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Button mnemonicParsing="false" onAction="#buttonRemoveByMobilePhone" text="Delete by Phone">
+                     <HBox.margin>
+                        <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
             <Button mnemonicParsing="false" onAction="#buttonClearTextAreaClicked" prefHeight="35.0" prefWidth="250.0" text="Clear Text Area">
                <VBox.margin>
                   <Insets bottom="7.0" left="30.0" right="7.0" top="7.0" />

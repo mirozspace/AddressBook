@@ -6,10 +6,9 @@ import models.Person;
 import validators.Validator;
 import visual.BaseLayoutController;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Engine {
 
@@ -35,56 +34,56 @@ public class Engine {
         BaseLayoutController controller = new BaseLayoutController();
         Person person = new Person(firstName, mobilePhone);
 
-        if (!lastName.equals(CommonConstants.EMPTY_STRING)){
-            try{
+        if (!lastName.equals(CommonConstants.EMPTY_STRING)) {
+            try {
                 Validator.checkName(lastName);
                 person.setLastName(lastName);
-            }catch (Exception e){
+            } catch (Exception e) {
                 controller.getTextArea().setText(ErrorMessagesAB.INVALID_NAME);
             }
         }
 
-        if (!homePhone.equals(CommonConstants.EMPTY_STRING)){
-            try{
+        if (!homePhone.equals(CommonConstants.EMPTY_STRING)) {
+            try {
                 Validator.checkName(homePhone);
                 person.setHomePhone(homePhone);
-            }catch (Exception e){
+            } catch (Exception e) {
                 controller.getTextArea().setText(ErrorMessagesAB.INVALID_HOME_NUMBER);
             }
         }
 
-        if (!workPhone.equals(CommonConstants.EMPTY_STRING)){
-            try{
+        if (!workPhone.equals(CommonConstants.EMPTY_STRING)) {
+            try {
                 Validator.checkName(workPhone);
                 person.setWorkPhone(workPhone);
-            }catch (Exception e){
+            } catch (Exception e) {
                 controller.getTextArea().setText(ErrorMessagesAB.INVALID_WORK_NUMBER);
             }
         }
 
-        if (!age.equals(CommonConstants.EMPTY_STRING)){
-            try{
+        if (!age.equals(CommonConstants.EMPTY_STRING)) {
+            try {
                 Validator.checkAge(Integer.parseInt(age));
                 person.setAge(Integer.parseInt(age));
-            }catch (Exception e){
+            } catch (Exception e) {
                 controller.getTextArea().setText(ErrorMessagesAB.INVALID_AGES);
             }
         }
 
-        if (!city.equals(CommonConstants.EMPTY_STRING)){
-            try{
+        if (!city.equals(CommonConstants.EMPTY_STRING)) {
+            try {
                 Validator.checkCityName(city);
                 person.setCity(city);
-            }catch (Exception e){
+            } catch (Exception e) {
                 controller.getTextArea().setText(ErrorMessagesAB.INVALID_CITY_NAME);
             }
         }
 
-        if (!country.equals(CommonConstants.EMPTY_STRING)){
-            try{
+        if (!country.equals(CommonConstants.EMPTY_STRING)) {
+            try {
                 Validator.checkCountryName(country);
                 person.setCountry(country);
-            }catch (Exception e){
+            } catch (Exception e) {
                 controller.getTextArea().setText(ErrorMessagesAB.INVALID_COUNTRY_NAME);
             }
         }
@@ -111,6 +110,27 @@ public class Engine {
         pw.write("");
         pw.flush();
         pw.close();
+    }
+
+    public void removeByMobilePhone(String mobileNumber) throws IOException {
+        List<Person> list = new ArrayList<>();
+        BufferedReader reader = new BufferedReader(new FileReader(CommonConstants.FILE_PATH));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(CommonConstants.FILE_PATH, true));
+        String line = reader.readLine();
+        while (line != null) {
+            String[] lineArr = line.split(" , ");
+            list.add(new Person(lineArr[0],lineArr[1], lineArr[2], lineArr[3], lineArr[4],
+                    Integer.parseInt(lineArr[5]), lineArr[6], lineArr[7]));
+            line = reader.readLine();
+        }
+        Person person = list.stream().filter(e->e.getMobilePhone().equals(mobileNumber)).findFirst().get();
+        list.remove(person);
+        removeAllPeopleInFile();
+        for (Person person1 : list) {
+            writer.write(person1.makePersonLineForPerson());
+        }
+        reader.close();
+        writer.close();
     }
 
     //PRIVATE METHODS

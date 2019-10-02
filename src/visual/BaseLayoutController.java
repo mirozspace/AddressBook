@@ -24,6 +24,8 @@ import java.util.stream.Collectors;
 public class BaseLayoutController implements Initializable {
 
     @FXML
+    private TextField fieldDeleteByMobilePhone;
+    @FXML
     private TextField searchedFirstName;
     @FXML
     private TextArea textArea;
@@ -275,6 +277,16 @@ public class BaseLayoutController implements Initializable {
         engine.removeAllPeopleInFile();
     }
 
+    /**
+     *
+     * @throws IOException
+     */
+    public void buttonRemoveByMobilePhone() throws IOException {
+        Engine engine = new Engine();
+        int a = 1;
+        engine.removeByMobilePhone(fieldDeleteByMobilePhone.getText());
+
+    }
     /**
      * Tab from top menu. Exit from program
      */
