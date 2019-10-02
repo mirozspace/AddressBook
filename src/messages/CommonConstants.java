@@ -15,7 +15,7 @@ public class CommonConstants {
     public final static String FIRST_NAME = "First Name";
     public final static String LAST_NAME = "Last Name";
     public final static String MOBILE_PHONE = "Mobile Phone";
-    public final static String HOME_PHONE = "Home Phone";
+    public final static String EMAIL = "Email";
     public final static String WORK_PHONE = "Work Phone";
     //public final static String EMAIL = "Last Name";
     public final static String AGES = "Ages";

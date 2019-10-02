@@ -23,14 +23,14 @@ public class Engine {
         String firstName = personInformationArr[0];
         String lastName = personInformationArr[1];
         String mobilePhone = personInformationArr[2];
-        String homePhone = personInformationArr[3];
+        String email = personInformationArr[3];
         String workPhone = personInformationArr[4];
         String age = personInformationArr[5];
         String city = personInformationArr[6];
         String country = personInformationArr[7];
 
         /*Person person = new Person(firstName, lastName, mobilePhone,
-                homePhone, workPhone, age, city, country);*/
+                email, workPhone, age, city, country);*/
         BaseLayoutController controller = new BaseLayoutController();
         Person person = new Person(firstName, mobilePhone);
 
@@ -43,12 +43,12 @@ public class Engine {
             }
         }
 
-        if (!homePhone.equals(CommonConstants.EMPTY_STRING)) {
+        if (!email.equals(CommonConstants.EMPTY_STRING)) {
             try {
-                Validator.checkName(homePhone);
-                person.setHomePhone(homePhone);
+                Validator.checkName(email);
+                person.setEmail(email);
             } catch (Exception e) {
-                controller.getTextArea().setText(ErrorMessagesAB.INVALID_HOME_NUMBER);
+                controller.getTextArea().setText(ErrorMessagesAB.INVALID_EMAIL);
             }
         }
 
@@ -89,7 +89,7 @@ public class Engine {
         }
 
         /*checkingValuesBeforeSetting(lastName, controller, person);
-        checkingValuesBeforeSetting(homePhone, controller, person);
+        checkingValuesBeforeSetting(email, controller, person);
         checkingValuesBeforeSetting(workPhone, controller, person);
         checkingValuesBeforeSetting(age + "", controller, person);
         checkingValuesBeforeSetting(city, controller, person);

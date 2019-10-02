@@ -38,7 +38,7 @@ public class BaseLayoutController implements Initializable {
     @FXML
     private TextField mobilePhone;
     @FXML
-    private TextField homePhone;
+    private TextField email;
     @FXML
     private TextField workPhone;
     @FXML
@@ -92,11 +92,11 @@ public class BaseLayoutController implements Initializable {
             lastName1 = this.lastName.getText();
         }
 
-        String homePhone1;
-        if (this.homePhone.getText().isEmpty()) {
-            homePhone1 = this.homePhone.getText() + CommonConstants.NEW_SYMBOL;
+        String email1;
+        if (this.email.getText().isEmpty()) {
+            email1 = this.email.getText() + CommonConstants.NEW_SYMBOL;
         } else {
-            homePhone1 = this.homePhone.getText();
+            email1 = this.email.getText();
         }
 
         String workPhone1;
@@ -133,7 +133,7 @@ public class BaseLayoutController implements Initializable {
         sb.append(this.firstName.getText()).append(APPEND_SYMBOL_SB);
         sb.append(lastName1).append(APPEND_SYMBOL_SB);
         sb.append(this.mobilePhone.getText()).append(APPEND_SYMBOL_SB);
-        sb.append(homePhone1).append(APPEND_SYMBOL_SB);
+        sb.append(email1).append(APPEND_SYMBOL_SB);
         sb.append(workPhone1).append(APPEND_SYMBOL_SB);
         sb.append(age1).append(APPEND_SYMBOL_SB);
         sb.append(city1).append(APPEND_SYMBOL_SB);
@@ -152,7 +152,7 @@ public class BaseLayoutController implements Initializable {
         this.firstName.setText(null);
         this.lastName.setText(null);
         this.mobilePhone.setText(null);
-        this.homePhone.setText(null);
+        this.email.setText(null);
         this.workPhone.setText(null);
         this.age.setText(null);
         this.city.setText(null);
@@ -199,7 +199,7 @@ public class BaseLayoutController implements Initializable {
         Person person;
         person = new Person(lineArr[0], lineArr[2]);
         person.setLastName(lineArr[1]);
-        person.setHomePhone(lineArr[3]);
+        person.setEmail(lineArr[3]);
         person.setWorkPhone(lineArr[4]);
         person.setAge(Integer.parseInt(lineArr[5]));
         person.setCity(lineArr[6]);

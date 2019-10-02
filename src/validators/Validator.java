@@ -16,7 +16,7 @@ public class Validator {
         }
     }
 
-    public static void checkHomePhoneNumber(String mobileNumber) {
+    public static void checkEmailNumber(String mobileNumber) {
 
     }
 

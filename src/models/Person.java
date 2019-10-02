@@ -7,19 +7,19 @@ public class Person {
     private String firstName;
     private String lastName;
     private String mobilePhone;
-    private String homePhone;
+    private String email;
     private String workPhone;
     //private String email;
     private int age;
     private String city;
     private String country;
 
-    public Person(String firstName, String lastName, String mobilePhone, String homePhone,
+    public Person(String firstName, String lastName, String mobilePhone, String email,
                   String workPhone, int age, String city, String country) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.mobilePhone = mobilePhone;
-        this.homePhone = homePhone;
+        this.email = email;
         this.workPhone = workPhone;
         this.age = age;
         this.city = city;
@@ -30,7 +30,7 @@ public class Person {
         this.firstName = firstName;
         this.lastName = CommonConstants.NO_DATA;
         this.mobilePhone = mobilePhone;
-        this.homePhone = CommonConstants.NO_DATA;
+        this.email = CommonConstants.NO_DATA;
         this.workPhone = CommonConstants.NO_DATA;
         this.age = CommonConstants.NO_VALUE;
         this.city = CommonConstants.NO_DATA;
@@ -41,8 +41,8 @@ public class Person {
         this.lastName = lastName;
     }
 
-    public void setHomePhone(String homePhone) {
-        this.homePhone = homePhone;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setWorkPhone(String workPhone) {
@@ -73,8 +73,8 @@ public class Person {
         return mobilePhone;
     }
 
-    private String getHomePhone() {
-        return homePhone;
+    private String getEmail() {
+        return email;
     }
 
     private String getWorkPhone() {
@@ -99,7 +99,7 @@ public class Person {
         sb.append(this.firstName).append(CommonConstants.ARRAY_DELIMITER1);
         sb.append(this.lastName).append(CommonConstants.ARRAY_DELIMITER1);
         sb.append(this.mobilePhone).append(CommonConstants.ARRAY_DELIMITER1);
-        sb.append(this.homePhone).append(CommonConstants.ARRAY_DELIMITER1);
+        sb.append(this.email).append(CommonConstants.ARRAY_DELIMITER1);
         sb.append(this.workPhone).append(CommonConstants.ARRAY_DELIMITER1);
         sb.append(this.age).append(CommonConstants.ARRAY_DELIMITER1);
         sb.append(this.city).append(CommonConstants.ARRAY_DELIMITER1);
@@ -123,8 +123,8 @@ public class Person {
         if (!this.getMobilePhone().equals(CommonConstants.NO_DATA)) {
             sb.append(CommonConstants.MOBILE_PHONE).append(CommonConstants.ARRAY_DELIMITER3).append(this.getMobilePhone()).append(CommonConstants.ARRAY_DELIMITER4);
         }
-        if (!this.getHomePhone().equals(CommonConstants.NO_DATA)) {
-            sb.append(CommonConstants.HOME_PHONE).append(CommonConstants.ARRAY_DELIMITER3).append(this.getHomePhone()).append(CommonConstants.ARRAY_DELIMITER4);
+        if (!this.getEmail().equals(CommonConstants.NO_DATA)) {
+            sb.append(CommonConstants.EMAIL).append(CommonConstants.ARRAY_DELIMITER3).append(this.getEmail()).append(CommonConstants.ARRAY_DELIMITER4);
         }
         if (!this.getWorkPhone().equals(CommonConstants.NO_DATA)) {
             sb.append(CommonConstants.WORK_PHONE).append(CommonConstants.ARRAY_DELIMITER3).append(this.getWorkPhone()).append(CommonConstants.ARRAY_DELIMITER4);
